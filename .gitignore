@@ -1,0 +1,25 @@
+# Dataset folder (if exists)
+dataset/
+RSNA_Dataset/
+
+# Uploads folder
+uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Virtual environment
+venv/
+env/
+
+# Model weights
+*.h5
+*.pth
+*.ckpt
+
+# System files
+.DS_Store

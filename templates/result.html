@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Diagnostic Report | PneumoAI</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background: #f4f7fb;
+        }
+
+        .report-card {
+            border-radius: 15px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        .prediction-badge {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .normal {
+            color: #198754;
+        }
+
+        .pneumonia {
+            color: #dc3545;
+        }
+
+        .risk-box {
+            background: #fff;
+            border-left: 5px solid #0d6efd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .gradcam-note {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: #0d6efd;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-white shadow-sm no-print">
+    <div class="container">
+        <span class="navbar-brand mb-0 h5">
+            <i class="fas fa-heart-pulse me-2 text-danger"></i>PneumoAI Diagnostic System
+        </span>
+    </div>
+</nav>
+
+<!-- Report Container -->
+<div class="container py-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">AI-Based Chest X-ray Diagnostic Report</h2>
+        <p class="text-muted">Generated using Deep Learning (ResNet50 + Grad-CAM)</p>
+    </div>
+
+    <!-- Images Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="card report-card p-3">
+                <h5 class="section-title text-center mb-3">Original Chest X-ray</h5>
+                <img src="{{ url_for('static', filename=original_image) }}"
+                     class="img-fluid rounded shadow"
+                     style="width:100%; max-height:500px; object-fit:contain;">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card report-card p-3">
+                <h5 class="section-title text-center mb-3">Grad-CAM Activation Map</h5>
+                <img src="{{ url_for('static', filename=gradcam_image) }}"
+                     class="img-fluid rounded shadow"
+                     style="width:100%; max-height:500px; object-fit:contain;">
+
+                <p class="gradcam-note mt-3">
+                    🔴 Red/Yellow regions indicate areas with high model attention.<br>
+                    🟢 Green regions indicate low activation (normal lung patterns).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prediction Section -->
+    <div class="card report-card p-4 mb-4">
+        <div class="text-center">
+            <h4 class="section-title mb-3">AI Prediction Summary</h4>
+
+            <div class="prediction-badge {% if label == 'NORMAL' %}normal{% else %}pneumonia{% endif %}">
+                <i class="fas {% if label == 'NORMAL' %}fa-check-circle{% else %}fa-triangle-exclamation{% endif %} me-2"></i>
+                {{ label }}
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-between">
+                    <span class="text-muted">Model Confidence</span>
+                    <span class="fw-bold text-primary">{{ confidence }}%</span>
+                </div>
+
+                <div class="progress mt-2" style="height: 12px;">
+                    <div class="progress-bar 
+                        {% if label == 'NORMAL' %}bg-success{% else %}bg-danger{% endif %}"
+                        role="progressbar"
+                        style="width: {{ confidence }}%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Interpretation -->
+    <div class="risk-box mb-4">
+        <h5 class="section-title">Clinical Interpretation</h5>
+
+        {% if label == 'PNEUMONIA' %}
+            <p>
+                The AI model detected radiological patterns consistent with pneumonia.
+                Areas of increased activation correspond to potential inflammatory infiltrates.
+                Further clinical correlation and radiologist evaluation are recommended.
+            </p>
+        {% else %}
+            <p>
+                The AI model did not detect significant radiographic abnormalities
+                suggestive of pneumonia. Lung fields appear within normal limits.
+                Clinical evaluation is still advised if symptoms persist.
+            </p>
+        {% endif %}
+    </div>
+
+   
+
+    <!-- Action Buttons -->
+    <div class="text-center no-print">
+        <a href="/upload" class="btn btn-outline-primary me-3 px-4">
+            <i class="fas fa-redo me-2"></i>New Analysis
+        </a>
+        <button onclick="window.print()" class="btn btn-primary px-4">
+            <i class="fas fa-print me-2"></i>Print Report
+        </button>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-center mt-5 py-3 bg-white border-top">
+    <p class="small text-muted mb-0">
+        ⚠ This system is intended for academic and research purposes only.
+        It is not a substitute for professional medical diagnosis.
+    </p>
+</footer>
+
+</body>
+</html>
