@@ -17,7 +17,7 @@ UPLOAD_FOLDER = 'uploads'
 STATIC_FOLDER = 'static'
 RESULT_FOLDER = os.path.join(STATIC_FOLDER, 'results')
 
-MODEL_PATH = r'C:\Users\usman\OneDrive\Desktop\Batch10\model\best_model.h5'
+MODEL_PATH = r'C:\Users\usman\OneDrive\Desktop\Batch10\model\best_model.h5git push origin main'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
