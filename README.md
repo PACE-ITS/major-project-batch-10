@@ -10,11 +10,11 @@
 
 | Name               | Roll Number | GitHub |
 | :----------------- | :---------- | :----- |
-| J. Assan           | 23KQ5A6105  | —      |
 | R. Susmitha        | 22KQ1A6121  | —      |
 | P. Kavya           | 22KQ1A6117  | —      |
 | A. Karthik         | 22KQ1A6130  | —      |
 | K. Nirmal Yaswanth | 22KQ1A6143  | —      |
+| J. Assan           | 23KQ5A6105  | —      |
 
 **Project Guide:**
 Mrs. N. Haritha Patel
