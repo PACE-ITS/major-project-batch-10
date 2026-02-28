@@ -224,7 +224,8 @@ python app.py
 
 ## 📷 Project Output
 
-(Add Grad-CAM or Web UI screenshots here)
+![User Interface](./docs/WebUI.jpeg)
+![Result](./docs/Output.jpeg)
 
 ---
 
