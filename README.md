@@ -1,149 +1,249 @@
-# [PNEUMONIA DETECTION FROM CHEST X-RAY IMAGES USING DEEPLEARNING MODELS]
+# 🫁 PNEUMONIA DETECTION FROM CHEST X-RAY IMAGES USING DEEP LEARNING MODELS
 
-
-**Batch ID:** Batch-10  
-**Course:** Undergrad Major Project 2026  
-**Institution:** [PACE INSTITUTE OF TECHNOLOGY AND SCIENCES]
+**Batch ID:** Batch-10
+**Course:** Undergraduate Major Project – 2026
+**Institution:** PACE Institute of Technology and Sciences (Autonomous)
 
 ---
 
 ## 👥 Team Members
-| J.ASSAn | 23KQ5A6105 |  |
-| :--- | :--- | :--- |
-| R.Susmitha | [22KQ1A6121] |  |
-| P.Kavya | [22KQ1A6117] | @username |
-| A.karthik | [22KQ1A6130] | @username |
- K.Nirmal Yeswanth | [22KQ1A6143 ] | @username |
+
+| Name               | Roll Number | GitHub |
+| :----------------- | :---------- | :----- |
+| J. Assan           | 23KQ5A6105  | —      |
+| R. Susmitha        | 22KQ1A6121  | —      |
+| P. Kavya           | 22KQ1A6117  | —      |
+| A. Karthik         | 22KQ1A6130  | —      |
+| K. Nirmal Yaswanth | 22KQ1A6143  | —      |
+
+**Project Guide:**
+Mrs. N. Haritha Patel
+Assistant Professor, Department of Artificial Intelligence and Machine Learning
 
 ---
 
 ## 🚀 Project Overview
-**Problem Statement:** 
 
-Pneumonia is one of the leading causes of respiratory-related deaths worldwide, especially among children and elderly patients. Manual interpretation of chest X-ray images requires experienced radiologists and may lead to delayed diagnosis in resource-limited healthcare environments.
+### Problem Statement
 
-This project proposes an Artificial Intelligence based automated diagnostic assistant capable of detecting pneumonia from chest X-ray images while also providing visual explanation using Grad-CAM, improving trust and interpretability.
+Pneumonia is one of the leading causes of respiratory-related deaths worldwide, particularly among children and elderly patients. Diagnosis using chest X-ray imaging requires expert radiological interpretation, which may not always be available in resource-limited healthcare environments.
+
+Manual analysis may also introduce delays and observer variability. Therefore, this project proposes an **Artificial Intelligence–based automated diagnostic assistant** capable of detecting pneumonia from chest X-ray images while providing visual explanations using Grad-CAM to improve transparency and clinical trust.
+
 ---
 
-**Key Objective:** 
-The primary objective of this project is to develop an Explainable Artificial Intelligence (XAI) based pneumonia detection system using deep learning that can accurately classify chest X-ray images as Normal or Pneumonia while achieving high diagnostic performance (≈95%+ accuracy).
+### Key Objective
 
-Additionally, the system aims to provide visual interpretation using Grad-CAM heatmaps, allowing users and medical practitioners to understand which lung regions influenced the model’s prediction, thereby improving transparency and trust in AI-assisted diagnosis.
+The primary objective of this project is to develop an **Explainable Artificial Intelligence (XAI) based pneumonia detection system** using deep learning techniques capable of accurately classifying chest X-ray images as:
+
+* Normal
+* Pneumonia
+
+The system achieves approximately **95%+ diagnostic accuracy** while generating Grad-CAM heatmaps that highlight lung regions influencing predictions, improving interpretability for medical practitioners.
+
 ---
 
 ## 📊 Dataset Information
-* **Dataset Used:** Chest X-ray Pneumonia Dataset (Kermany Dataset)
-Available at Kaggle:
-* **Source:** [https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia]
-* **Description:** The dataset contains pediatric chest X-ray images categorized into two classes: Normal and Pneumonia.
-It includes approximately 5,800+ medical X-ray images organized into training, validation, and test folders.
-The training set was used for model learning, while validation data monitored model performance during training.
-Additionall,added 700 normal images for training for class imbalance.
-We split 70-15-15 rule for better model learning.
+
+### Dataset Used
+
+Chest X-ray Pneumonia Dataset (Kermany Dataset)
+
+**Kaggle Source:**
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
+### Description
+
+The dataset contains pediatric chest X-ray images categorized into:
+
+* Normal
+* Pneumonia
+
+Dataset Characteristics:
+
+* Approximately **5,800+ X-ray images**
+* Organized into training, validation, and testing folders
+* Clinically labeled medical images
+
+Additional Improvements:
+
+* Added **700 Normal images** to reduce class imbalance
+* Dataset split using **70–15–15 rule**
+
+  * Training
+  * Validation
+  * Testing
+
 ---
-* **Preprocessing:** 
->All chest X-ray images were resized to 224 × 224 pixels to match the ResNet50 input requirements.
->Images were normalized using ResNet50 preprocess_input() to improve model training stability.
->Data augmentation techniques such as rotation, zooming, shifting, and horizontal flipping were applied to the training dataset to improve generalization.
->Batch-wise image generators were used for efficient loading and GPU-based training in TensorFlow/Keras.
->Training, validation, and test datasets were kept separate to prevent data leakage during evaluation.
->The dataset contained properly labeled images, therefore no missing data handling was required.
-* **Dataset Link:**  [https://drive.google.com/drive/folders/1FMSO0HNpe5z7Z6t_t1_-TPoI8LXXR025?usp=drive_link].
-* **Model trained File**  [https://drive.google.com/file/d/1ap7uBFOPukiqPYAxKPdQQjVoau1KUJzY/view?usp=sharing]
+
+### Preprocessing Steps
+
+* Images resized to **224 × 224 pixels** (ResNet50 input size)
+* Normalization using `preprocess_input()`
+* Data augmentation applied:
+
+  * Rotation
+  * Zoom
+  * Horizontal flipping
+  * Width and height shifting
+* Batch image generators used for efficient GPU training
+* Dataset separation maintained to prevent data leakage
+
+Dataset Drive Link:
+https://drive.google.com/drive/folders/1FMSO0HNpe5z7Z6t_t1_-TPoI8LXXR025
+
+Trained Model File:
+https://drive.google.com/file/d/1ap7uBFOPukiqPYAxKPdQQjVoau1KUJzY
+
+---
 
 ## 🧠 Model Architecture & Methodology
-* **Algorithm/Model:**
-A ResNet50-based Convolutional Neural Network (CNN) with transfer learning was implemented to classify chest X-ray images as Normal or Pneumonia. The model was trained in two stages: Phase-1 feature extraction and Phase-2 fine tuning to improve medical feature learning.
-* **Framework:**
-The system was developed using TensorFlow and Keras in Google Colab with GPU support, including model evaluation using accuracy, ROC-AUC, confusion matrix analysis, and explainability through Grad-CAM visualization.
 
+### Algorithm / Model
+
+A **ResNet50-based Convolutional Neural Network (CNN)** using transfer learning was implemented for pneumonia classification.
+
+Training Strategy:
+
+Phase 1 — Feature Extraction
+
+* Backbone layers frozen
+* Classification layers trained
+
+Phase 2 — Fine Tuning
+
+* Deep layers unfrozen
+* Medical feature adaptation improved
+
+---
+
+### Framework
+
+The system was developed using:
+
+* TensorFlow
+* Keras
+* Python
+* Google Colab GPU Environment
+
+Evaluation Methods:
+
+* Accuracy
+* ROC-AUC Analysis
+* Confusion Matrix
+* Grad-CAM Explainability
+
+---
 
 ## 📈 Results & Performance
-* **Project Results:**
-| Metric | Value |
-| :--- | :--- |
-| Accuracy | 95.6% |
+
+### Model Performance
+
+| Metric    | Value |
+| :-------- | :---- |
+| Accuracy  | 95.6% |
 | Precision | 98.3% |
-| Recall | 95.1% |
-| F1-Score | 96.7% |
-| ROC-AUC | 0.99 |
+| Recall    | 95.1% |
+| F1 Score  | 96.7% |
+| ROC-AUC   | 0.99  |
 
-![Training History Graph](./docs/accuracy.png) 
+### Training Performance
 
-![ROC Curve Graph](./roc/roccurve.png)
+![Training Accuracy](./docs/accuracy.png)
 
-![Confusion matrix](./report/cm.png)
+### ROC Curve
 
+![ROC Curve](./docs/roccurve.png)
 
+### Confusion Matrix
+
+![Confusion Matrix](./docs/cm.png)
+
+---
 
 ## 🔬 Explainable AI — Grad-CAM
 
-To improve medical interpretability, Grad-CAM visualization is integrated.
+To enhance medical interpretability, Grad-CAM visualization was integrated into the system.
 
 Grad-CAM highlights:
 
-🔴 Red / Yellow → Highly important infected lung regions
+* 🔴 Red / Yellow → Highly important infected lung regions
+* 🟢 Blue / Green → Normal lung structures
 
-🟢 Blue / Green → Normal lung structure
+Workflow:
 
-This allows doctors to visually verify model reasoning.
+Original X-ray
+→ Model Prediction
+→ Infection Region Highlighted
 
-Example Output:
+This improves clinical reliability and model transparency.
 
-Original X-ray → Model Prediction → Affected Lung Region Highlighted
+---
 
-This significantly improves clinical reliability.
-
-
-🌐 Web Deployment
+## 🌐 Web Deployment
 
 The trained model is deployed using:
 
-Flask Framework
+* Flask Framework
+* HTML5 + Bootstrap Interface
+* Grad-CAM Visualization Pipeline
 
-HTML5 + Bootstrap UI
+### System Workflow
 
-Grad-CAM visualization pipeline
-
-System Workflow:
-
-Upload X-ray
-      ↓
+Upload Chest X-ray
+↓
 Model Prediction
-      ↓
+↓
 Confidence Score
-      ↓
-Grad-CAM Explanation
-      ↓
+↓
+Grad-CAM Visualization
+↓
 Diagnostic Report
-🚀 Installation
 
-Clone repository:
+---
 
-git clone https://github.com/PACE-ITS/major-project-batch-10
+## 🚀 Installation
 
-Install dependencies:
+### Clone Repository
 
+```
+git clone https://github.com/PACE-ITS/major-project-batch-10.git
+```
+
+### Install Dependencies
+
+```
 pip install -r requirements.txt
+```
 
-Run application:
+### Run Application
 
+```
 python app.py
+```
 
-Open browser:
+## 📷 Project Output
 
-http://127.0.0.1:5000
-📷 Project Output
+(Add Grad-CAM or Web UI screenshots here)
 
+---
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 
-Multi-disease lung detection
+* Multi-disease lung abnormality detection
+* RSNA dataset generalization
+* Cloud-based deployment
+* Doctor feedback integration
+* Real-time hospital integration
 
-RSNA dataset generalization
+---
 
-Cloud deployment
+## 📜 License
 
-Doctor feedback integration
+This project is developed for academic and research purposes.
 
+---
 
+## 🙏 Acknowledgment
+
+We acknowledge publicly available medical imaging datasets and open-source deep learning frameworks that supported this research work.
