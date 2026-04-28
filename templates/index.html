@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoAI - Professional Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-heart-pulse me-2"></i>PneumoAI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/upload">Upload</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Project</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h1>AI-Powered Pneumonia Detection</h1>
+                    <p class="mt-3">A specialized medical analysis system using deep learning to detect pneumonia patterns in chest X-rays with high precision and interpretability.</p>
+                    <div class="mt-5">
+                        <a href="/upload" class="btn btn-primary btn-lg px-5">
+                            <i class="fas fa-upload me-2"></i>Upload X-ray
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block fade-in">
+                                        <img src="https://img.freepik.com/free-vector/doctor-examining-patient-clinic_23-2148856559.jpg?w=996&t=st=1686754000~exp=1686754600~hmac=..." alt="Medical Analysis" class="img-fluid position-relative z-1 illustration-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                        <h4>Deep Learning</h4>
+                        <p class="text-muted">Utilizes ResNet50 architecture for robust feature extraction and classification.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <i class="fas fa-eye fa-3x text-primary mb-3"></i>
+                        <h4>Grad-CAM</h4>
+                        <p class="text-muted">Visualizes decision regions to help medical professionals understand model focus.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
+                        <h4>Instant Results</h4>
+                        <p class="text-muted">Processes high-resolution images in seconds for real-time diagnostic support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>PneumoAI</h5>
+                    <p class="text-muted">College Final Year Project - AI/ML Specialization</p>
+                    <div class="social-icons mb-3">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <hr class="my-4">
+                    <p class="small text-muted">&copy; 2026 PneumoAI Project. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
